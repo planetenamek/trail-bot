@@ -1,0 +1,8 @@
+{
+  "name": "trail_bot",
+  "version": "0.0.1",
+  "dependencies": {
+    "discord.js": "~11.3.2",
+    "steem": "~0.7"
+  }
+}
