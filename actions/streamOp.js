@@ -46,7 +46,7 @@ function stream() {
                 trail_voter = config.master_vote[i].username
                 // Send vote
                 upvote(wif, trail_voter, author, permlink, weight)
-                if (i === 1) {
+                if (i === 0) {
                   // Send comment
                   comment(author, permlink)
                 }
