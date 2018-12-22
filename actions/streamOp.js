@@ -23,15 +23,18 @@ function stream() {
     steem.api.streamOperations((err, operation) => {
       if (err) return reject(err);
 
-      if (operation[0] == "vote") { // Check all votes from steem blockchain
+      if (operation[0] === "vote") { // Check all votes from steem blockchain
         let voter = operation[1].voter
         // Check if the voter is tracked or not
-        if (voter == config.trackerVoter) {
+        if (voter === config.trackerVoter) {
           let author = operation[1].author,
             permlink = operation[1].permlink,
             weight = operation[1].weight / 100;
           // Get tags from checking tracked tag
           steem.api.getContent(author, permlink, function(err, res) {
+
+            let tag = "undefined";
+
             try {
               let data = JSON.parse(res.json_metadata)
               tag = data.tags;
@@ -40,10 +43,10 @@ function stream() {
               return;
             }
             // If tag is tracked send vote
-            if (typeof tag != "undefined" && tag.indexOf(config.tagTrackerVoter) != (-1)) {
-              for (i = 0; i > config.master_vote.length; i++) {
+            if (typeof tag !== "undefined" && tag.indexOf(config.tagTrackerVoter) !== -1) {
+              for (let i = 0; i < config.master_vote.length; i++) {
                 let wif = config.master_vote[i].wif
-                trail_voter = config.master_vote[i].username
+                const trail_voter = config.master_vote[i].username
                 // Send vote
                 upvote(wif, trail_voter, author, permlink, weight)
                 if (i === 0) {
@@ -75,7 +78,7 @@ function upvote(wif, voter, author, permlink, weight) {
 }
 
 function comment(author, permlink) {
-  wif = config.comment_account[0].wif,
+  const wif = config.comment_account[0].wif,
     username = config.comment_account[0].username,
     permlink2 = steem.formatter.commentPermlink(author, permlink),
     content = config.comment_message;
