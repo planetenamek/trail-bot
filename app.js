@@ -1,17 +1,20 @@
-const Discord = require("discord.js");
-const config = require("./config.json");
+require('dotenv').config();
+//const Discord = require("discord.js");
+const config = require("./config.js");
 
-var bot = new Discord.Client({
+/*var bot = new Discord.Client({
   autoReconnect: true
-});
+});*/
 var streamOp = require("./actions/streamOp.js");
 
-bot.on("ready", () => {
+/*bot.on("ready", () => {
   console.log("Trail Bot Ready !");
   bot.user.setActivity('Stream Steem');
   streamOp.stream();
-});
+});*/
 
+streamOp.stream();
+/*
 bot.on("message", async message => {
   const args = message.content.slice(config.prefix.length).trim().split(/ +/g);
   const command = args.shift().toLowerCase();
@@ -24,6 +27,6 @@ bot.on("message", async message => {
     default:
       console.log('Unknown command');
   }
-});
+});*/
 
-bot.login(config.token);
+//bot.login(config.token);

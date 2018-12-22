@@ -1,17 +1,17 @@
-const Discord = require("discord.js");
+//const Discord = require("discord.js");
 const steem = require("steem");
-const config = require("./../config.json");
+const config = require("../config.js");
 
 const {
   nodes
 } = require("./../nodes");
 
-var bot = new Discord.Client({
+/*var bot = new Discord.Client({
   autoReconnect: true
-});
+});*/
 var index = 0;
 
-bot.login(config.token);
+//bot.login(config.token);
 
 function stream() {
   steem.api.setOptions({
