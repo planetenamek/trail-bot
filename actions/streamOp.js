@@ -29,7 +29,7 @@ function stream() {
         if (voter === config.trackerVoter) {
           let author = operation[1].author,
             permlink = operation[1].permlink,
-            weight = operation[1].weight / 100;
+            weight = operation[1].weight;
           // Get tags from checking tracked tag
           steem.api.getContent(author, permlink, function(err, res) {
 
