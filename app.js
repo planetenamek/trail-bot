@@ -26,4 +26,10 @@ bot.on("message", async message => {
   }
 });
 
+bot.on("disconnect", function() {
+  console.log("Bot disconnected");
+  bot.login(config.token);
+  console.log("DiscoSteem-V2 Ready !");
+});
+
 bot.login(config.token);
