@@ -1,5 +1,6 @@
+require('dotenv').config();
 const Discord = require("discord.js");
-const config = require("./config.json");
+const config = require("./config.js");
 
 var bot = new Discord.Client({
   autoReconnect: true
@@ -11,6 +12,13 @@ bot.on("ready", () => {
   bot.user.setActivity('Stream Steem');
   streamOp.stream();
 });
+
+bot.on("disconnect", function() {
+  console.log("Bot disconnected");
+  bot.login(config.token);
+  console.log("Trail Bot Ready !");
+});
+
 
 bot.on("message", async message => {
   const args = message.content.slice(config.prefix.length).trim().split(/ +/g);
