@@ -10,9 +10,9 @@ const streamOP = require("./actions/streamOp.js");
 bot.on("ready", () => {
   console.log("Trail Bot Ready !");
   bot.user.setActivity('Stream Steem');
-  streamOP.stream();
 });
 
+  streamOP.stream();
 
 bot.on("disconnect", function() {
   console.log("Bot disconnected");

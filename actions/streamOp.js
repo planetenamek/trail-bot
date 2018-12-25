@@ -29,6 +29,7 @@ async function parseBlock(blocknb) {
                 let voter = vote.voter;
                 // Check if the voter is tracked or not
                 if (voter === config.trackerVoter) {
+                    console.log("got an author from ")
                     let author = vote.author,
                         permlink = vote.permlink,
                         weight = vote.weight;
@@ -73,9 +74,12 @@ function stream() {
 
     let stream_feed = client.blockchain.getBlockNumberStream();
 
-    stream_feed.pipe(es.map(function (block, callback) {
-        callback(null, parseBlock(block))
-  }));
+    stream = client.blockchain.getBlockStream();
+    stream.on('data', parseBlock);
+
+//            stream_feed.pipe(es.map(function (block, callback) {
+  //      callback(null, parseBlock(block))
+  //}));
 }
 
 
