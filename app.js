@@ -5,13 +5,14 @@ const config = require("./config.js");
 var bot = new Discord.Client({
   autoReconnect: true
 });
-var streamOp = require("./actions/streamOp.js");
+const streamOP = require("./actions/streamOp.js");
 
 bot.on("ready", () => {
   console.log("Trail Bot Ready !");
   bot.user.setActivity('Stream Steem');
-  streamOp.stream();
+  streamOP.stream();
 });
+
 
 bot.on("disconnect", function() {
   console.log("Bot disconnected");
