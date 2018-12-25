@@ -1,13 +1,13 @@
 module.exports = {
   "token"  : process.env.TOKEN,
   "prefix" : "$",
-  "trackerVoter" : "fr-stars",
-  "tagTrackerVoter" : "fr",
+  "trackerVoter" : "petanque",
+  "tagTrackerVoter" : "steempress",
   "comment_account" : [
-    {"username" : "fr-stars", "wif" : process.env.FRSTARS_WIF}
+    {"username" : "petanque", "wif" : process.env.FRSTARS_WIF}
   ],
-  "comment_message" : "Ce post a été supporté par notre initiative de curation francophone @fr-stars. \nRendez-vous sur notre serveur [**Discord**](https://discord.gg/CcNs5uP) pour plus d'informations",
+  "comment_message" : "Great post ! Upvoted",
   "master_vote" : [
-    {"username" : "planter", "wif" : process.env.PLANTER_WIF}
+    {"username" : "howo", "wif" : process.env.PLANTER_WIF}
   ]
 };
