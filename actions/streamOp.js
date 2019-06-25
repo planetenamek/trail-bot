@@ -2,10 +2,6 @@ const Discord = require("discord.js");
 const steem = require("steem");
 const config = require("../config.js");
 
-const {
-  nodes
-} = require("./../nodes");
-
 var bot = new Discord.Client({
   autoReconnect: true
 });
@@ -15,10 +11,10 @@ bot.login(config.token);
 
 function stream() {
   steem.api.setOptions({
-    url: nodes[index]
+    url: "https://api.steemit.com"
   });
   return new Promise((resolve, reject) => {
-    console.log('Connected to', nodes[index]);
+    console.log('Connected to https://api.steemit.com');
 
     steem.api.streamOperations((err, operation) => {
       if (err) return reject(err);
@@ -61,8 +57,7 @@ function stream() {
     });
 
   }).catch(err => {
-    console.log('Stream error:', err.message, 'with', nodes[index]);
-    index = ++index === nodes.length ? 0 : index;
+    console.log('Stream error:', err.message);
     stream();
   });
 }
